@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import axios from 'axios';
-import './App.css';
+import '../App.css';
+import CaloriesPopUp from './CaloriesPopUp';
 
 function Popup({ closePopup, adjustCalories }) {
   return (
@@ -15,14 +16,24 @@ function Popup({ closePopup, adjustCalories }) {
 }
 
 
-function App() {
+function Calories() {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('male');
   const [activityLevel, setActivityLevel] = useState('sedentary');
   const [result, setResult] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
+  const [show, setShow] = useState(false);
+  const adjustCalories = (factor) => {
+    // Logic để điều chỉnh calo dựa trên factor
+    console.log(`Adjusting calories with factor: ${factor}`);
+  };
+  const togglePopup = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  }
 
   const calculateBMIandBMR = () => {
     if (weight && height && age && gender && activityLevel) {
@@ -143,9 +154,19 @@ function App() {
         </select>
       </div>
       <button onClick={calculateBMIandBMR}>Result</button>
+      <button onClick={togglePopup}>Set your goal</button>
+      <CaloriesPopUp
+        show={show}
+        handleClose={handleClose}
+        calculateBMIandBMR={calculateBMIandBMR}  // Truyền hàm calculateBMIandBMR vào prop
+        gender={gender}
+        activityLevel={activityLevel}
+        adjustCalories={adjustCalories}
+      />
       <div id="result">{result}</div>
+
     </div>
   );
 }
 
-export default App;
+export default Calories;
