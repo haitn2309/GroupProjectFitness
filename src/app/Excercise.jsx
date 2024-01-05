@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CaloriesPopUp = () => {
+const Excercise = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const CaloriesPopUp = () => {
   )
 }
 
-export default CaloriesPopUp
+export default Excercise;
