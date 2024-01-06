@@ -9,6 +9,7 @@ import Calories from './app/Calories.jsx';
 import Layout from './Layout.jsx';
 import BMI from './app/BMI.jsx'
 import Home from './app/Home.jsx';
+import Excercise from '.app/Excercise.jsx';
 
 
 const AppRoutes = (props) => {
@@ -20,6 +21,7 @@ const AppRoutes = (props) => {
           <Route path="/" element={<Home />} />
           <Route path="calories" element={<Calories />} />
           <Route path="bmi" element={<BMI />} />
+          <Route path="excercise" element={<BMI />} />
         </Route>
       </Routes>
     </>
