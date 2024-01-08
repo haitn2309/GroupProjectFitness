@@ -1,7 +1,39 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Typography, Box, TextField, Button } from '@mui/material';
+import { bodyPartList, searchExercises } from '../service/exercise';
 
-const CaloriesP = () => {
+const Calories = () => {
+
+  const [search, setSearch] = useState('');
+  const [bodyParts, setBodyParts] = useState([]);
+  const fetchExercisesData = async () => {
+    const bodyPartsData = await bodyPartList();
+    // console.log(bodyPartsData);
+    setBodyParts(['all', ...bodyPartsData]);
+  }
+
+  useEffect(() => {
+    fetchExercisesData();
+  }, []);
+
+  const handleSearch = async () => {
+    if (search) {
+      const exercisesData = await searchExercises();
+
+      const searchedExercises = exercisesData.filter(
+        (item) => item.name.toLowerCase().includes(search)
+               || item.target.toLowerCase().includes(search)
+               || item.equipment.toLowerCase().includes(search)
+               || item.bodyPart.toLowerCase().includes(search),
+      );
+
+      window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
+
+      setSearch('');
+      
+      // setExercises(searchedExercises);
+    }
+  };
   return (
     <div>
       {/* Typography for Heading with minimal margin bottom */}
@@ -33,11 +65,16 @@ const CaloriesP = () => {
             label="Search Excercise" 
             variant="outlined" 
             fullWidth  // Make TextField take full width of parent Box
+            value={search}
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
+            placeholder="Search Exercises"
+            type="text"
           />
           <Button 
             variant="contained" 
             color="error" 
             sx={{ marginLeft: 1 }}
+            onClick={handleSearch}
           >
             Search
           </Button>
@@ -47,4 +84,4 @@ const CaloriesP = () => {
   );
 }
 
-export default CaloriesP;
+export default Calories;

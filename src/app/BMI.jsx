@@ -84,10 +84,10 @@ const BMI = () => {
       <h2 style={formHeadingStyle}>Fill details and Receive Email</h2>
       <p>Body mass index is a value derived from the mass and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is expressed in units of kg/m², resulting from mass in kilograms and height in metres.</p>
       <h3 style={bmiHeadingStyle}>Your BMI</h3>
-      <input type="text" placeholder="Height / cm" />
-      <input type="text" placeholder="Weight / kg" />
-      <input type="text" placeholder="Age"/>
-      <input type="text" placeholder="Sex"/>
+      <input type="text" placeholder="Height / cm" className='px-3 py-3 border-black border-[2px] rounded-[4px]'/>
+      <input type="text" placeholder="Weight / kg" className='px-3 py-3 border-black border-[2px] rounded-[4px]'/>
+      <input type="text" placeholder="Age" className='px-3 py-3 border-black border-[2px] rounded-[4px]'/>
+      <input type="text" placeholder="Sex" className='px-3 py-3 border-black border-[2px] rounded-[4px]'/>
       {/* Add other form fields here */}
       <button style={buttonStyle}>Submit Now</button>
     </div>
@@ -116,7 +116,7 @@ const BMI = () => {
     <div>
       <div style={backgroundImageContainerStyle}>
         <img src={Background} alt="Background" style={imageStyle} />
-        <span style={textStyle}>BMI Calculator</span>
+        <span style={textStyle}>BMI / BMR Calculator</span>
       </div>
       <div style={sectionStyle}>
         {formColumn}
