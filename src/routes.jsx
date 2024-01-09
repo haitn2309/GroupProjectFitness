@@ -22,7 +22,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="calories" element={<Calories />} />
           <Route path="bmi" element={<BMI />} />
-          <Route path="excercise" element={<BMI />} />
+          <Route path="excercise" element={<Excercise />} />
           <Route path='horizontal' element={<HorizontalScrollBar />}/>
         </Route>
       </Routes>
